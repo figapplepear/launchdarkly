@@ -1,4 +1,4 @@
 ---
-title: Welcome to my blog
+title: Olivia's LD Journey Begins...
 ---
 
