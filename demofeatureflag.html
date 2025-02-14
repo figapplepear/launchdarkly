@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchDarkly Feature Flag Demo</title>
+    <style>
+        /* Dark mode inspired by LaunchDarkly's UI */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #2a2a3c;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #00aaff;
+        }
+
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 12px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .off {
+            background-color: #ff4c4c;
+            color: white;
+        }
+
+        .on {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Toggle switch styling */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .toggle-label {
+            font-size: 16px;
+            color: #cccccc;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ff4c4c;
+            border-radius: 30px;
+            transition: 0.4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(28px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>LaunchDarkly Feature Flag Demo</h1>
+        <p>Toggle the switch to simulate my job application journey!</p>
+
+        <p class="status off" id="flagStatus">Interview Scheduled</p>
+
+        <div class="toggle-container">
+            <span class="toggle-label">OFF</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="featureToggle" onclick="toggleFlag()">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">ON</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleFlag() {
+            let flag = document.getElementById("featureToggle");
+            let statusElement = document.getElementById("flagStatus");
+
+            if (flag.checked) {
+                statusElement.textContent = "Offer Extended";
+                statusElement.className = "status on";
+            } else {
+                statusElement.textContent = "Interview Scheduled";
+                statusElement.className = "status off";
+            }
+        }
+    </script>
+
+</body>
+</html>
