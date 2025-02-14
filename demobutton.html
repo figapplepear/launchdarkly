@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchDarkly Feature Flag Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .status {
+            font-size: 24px;
+            margin: 20px;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .off {
+            background-color: red;
+            color: white;
+        }
+        .on {
+            background-color: green;
+            color: white;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Feature Flag for LaunchDarkly</h1>
+    <p>Toggle the flag to simulate my job application journey!</p>
+    
+    <p class="status off" id="flagStatus">Interview Scheduled</p>
+    
+    <button onclick="toggleFlag()">Toggle Feature Flag</button>
+
+    <script>
+        let flagEnabled = false;
+
+        function toggleFlag() {
+            flagEnabled = !flagEnabled;
+            let statusElement = document.getElementById("flagStatus");
+
+            if (flagEnabled) {
+                statusElement.textContent = "Offer Extended";
+                statusElement.className = "status on";
+            } else {
+                statusElement.textContent = "Interview Scheduled";
+                statusElement.className = "status off";
+            }
+        }
+    </script>
+
+</body>
+</html>
